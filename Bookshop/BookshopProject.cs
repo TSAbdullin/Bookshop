@@ -32,5 +32,29 @@ namespace Bookshop
         {
 
         }
+
+        private void MainGrid_SelectionChanged(object sender, EventArgs e)
+        {
+            if (MainGrid.SelectedRows.Count > 0)
+            {
+                var book = MainGrid.SelectedRows[0].DataBoundItem as Book;
+
+                textBoxId.Text = book.Id.ToString();
+                textBoxAuthor.Text = book.AuthorName.ToString();
+                textBoxGenre.Text = book.GenreName.ToString();
+                textBoxTitle.Text = book.Title.ToString();
+                checkBoxHasDicount.Checked = book.HasDiscount;
+            }
+        }
+
+        private void groupBoxCard_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBoxHasDiscount_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

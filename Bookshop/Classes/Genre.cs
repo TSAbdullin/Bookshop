@@ -12,10 +12,5 @@
             _idCounter = _idCounter + 1; // предположим, что в файле все гарантированно отсортированно по ID)
             this.Name = Name;
         }
-
-        public string GetGenreById(long id)
-        {
-            return Name;
-        }
     }
 }

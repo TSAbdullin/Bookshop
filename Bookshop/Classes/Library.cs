@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.IO;
 
 namespace Bookshop.Classes
@@ -79,11 +78,6 @@ namespace Bookshop.Classes
 
             string[] linesGenres = File.ReadAllLines(pathToGenres);
 
-            /*
-             Поскольку в названии книг обычно не ставятся точки
-            было принято решение сделать разделение через Split по точке, 
-            тем самым разделить ID книги и информацию о книге
-             */
 
             for (int i = 0; i < linesGenres.Length; i++)
             {
@@ -107,12 +101,6 @@ namespace Bookshop.Classes
             }
 
             string[] linesAuthors = File.ReadAllLines(pathToAuthors);
-
-            /*
-             Поскольку в названии книг обычно не ставятся точки
-            было принято решение сделать разделение через Split по точке, 
-            тем самым разделить ID книги и информацию о книге
-             */
 
             for (int i = 0; i < linesAuthors.Length; i++)
             {
