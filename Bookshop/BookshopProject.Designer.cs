@@ -31,16 +31,19 @@
             this.components = new System.ComponentModel.Container();
             this.MainGrid = new System.Windows.Forms.DataGridView();
             this.groupBoxCard = new System.Windows.Forms.GroupBox();
+            this.checkBoxHasDicount = new System.Windows.Forms.CheckBox();
+            this.labelTitleText = new System.Windows.Forms.Label();
+            this.labelGenreText = new System.Windows.Forms.Label();
+            this.labelBookAuthor = new System.Windows.Forms.Label();
+            this.labelBookId = new System.Windows.Forms.Label();
             this.textBoxId = new System.Windows.Forms.TextBox();
             this.textBoxTitle = new System.Windows.Forms.TextBox();
             this.textBoxGenre = new System.Windows.Forms.TextBox();
             this.textBoxAuthor = new System.Windows.Forms.TextBox();
-            this.labelBookId = new System.Windows.Forms.Label();
-            this.labelBookAuthor = new System.Windows.Forms.Label();
-            this.labelGenreText = new System.Windows.Forms.Label();
-            this.labelTitleText = new System.Windows.Forms.Label();
-            this.checkBoxHasDicount = new System.Windows.Forms.CheckBox();
             this.BookshopMenu = new System.Windows.Forms.MenuStrip();
+            this.MenuItemAdd = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuItemEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuItemDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AuthorId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,6 +51,7 @@
             this.bookBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.MainGrid)).BeginInit();
             this.groupBoxCard.SuspendLayout();
+            this.BookshopMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bookBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -102,6 +106,52 @@
             this.groupBoxCard.Text = "Card";
             this.groupBoxCard.Enter += new System.EventHandler(this.groupBoxCard_Enter);
             // 
+            // checkBoxHasDicount
+            // 
+            this.checkBoxHasDicount.AutoSize = true;
+            this.checkBoxHasDicount.Location = new System.Drawing.Point(27, 293);
+            this.checkBoxHasDicount.Name = "checkBoxHasDicount";
+            this.checkBoxHasDicount.Size = new System.Drawing.Size(91, 24);
+            this.checkBoxHasDicount.TabIndex = 10;
+            this.checkBoxHasDicount.Text = "Discount";
+            this.checkBoxHasDicount.UseVisualStyleBackColor = true;
+            // 
+            // labelTitleText
+            // 
+            this.labelTitleText.AutoSize = true;
+            this.labelTitleText.Location = new System.Drawing.Point(23, 191);
+            this.labelTitleText.Name = "labelTitleText";
+            this.labelTitleText.Size = new System.Drawing.Size(38, 20);
+            this.labelTitleText.TabIndex = 8;
+            this.labelTitleText.Text = "Title";
+            // 
+            // labelGenreText
+            // 
+            this.labelGenreText.AutoSize = true;
+            this.labelGenreText.Location = new System.Drawing.Point(23, 138);
+            this.labelGenreText.Name = "labelGenreText";
+            this.labelGenreText.Size = new System.Drawing.Size(54, 20);
+            this.labelGenreText.TabIndex = 7;
+            this.labelGenreText.Text = "Genre";
+            // 
+            // labelBookAuthor
+            // 
+            this.labelBookAuthor.AutoSize = true;
+            this.labelBookAuthor.Location = new System.Drawing.Point(23, 85);
+            this.labelBookAuthor.Name = "labelBookAuthor";
+            this.labelBookAuthor.Size = new System.Drawing.Size(57, 20);
+            this.labelBookAuthor.TabIndex = 6;
+            this.labelBookAuthor.Text = "Author";
+            // 
+            // labelBookId
+            // 
+            this.labelBookId.AutoSize = true;
+            this.labelBookId.Location = new System.Drawing.Point(23, 30);
+            this.labelBookId.Name = "labelBookId";
+            this.labelBookId.Size = new System.Drawing.Size(67, 20);
+            this.labelBookId.TabIndex = 5;
+            this.labelBookId.Text = "Book ID";
+            // 
             // textBoxId
             // 
             this.textBoxId.Location = new System.Drawing.Point(27, 53);
@@ -134,59 +184,38 @@
             this.textBoxAuthor.Size = new System.Drawing.Size(215, 26);
             this.textBoxAuthor.TabIndex = 0;
             // 
-            // labelBookId
-            // 
-            this.labelBookId.AutoSize = true;
-            this.labelBookId.Location = new System.Drawing.Point(23, 30);
-            this.labelBookId.Name = "labelBookId";
-            this.labelBookId.Size = new System.Drawing.Size(67, 20);
-            this.labelBookId.TabIndex = 5;
-            this.labelBookId.Text = "Book ID";
-            // 
-            // labelBookAuthor
-            // 
-            this.labelBookAuthor.AutoSize = true;
-            this.labelBookAuthor.Location = new System.Drawing.Point(23, 85);
-            this.labelBookAuthor.Name = "labelBookAuthor";
-            this.labelBookAuthor.Size = new System.Drawing.Size(57, 20);
-            this.labelBookAuthor.TabIndex = 6;
-            this.labelBookAuthor.Text = "Author";
-            // 
-            // labelGenreText
-            // 
-            this.labelGenreText.AutoSize = true;
-            this.labelGenreText.Location = new System.Drawing.Point(23, 138);
-            this.labelGenreText.Name = "labelGenreText";
-            this.labelGenreText.Size = new System.Drawing.Size(54, 20);
-            this.labelGenreText.TabIndex = 7;
-            this.labelGenreText.Text = "Genre";
-            // 
-            // labelTitleText
-            // 
-            this.labelTitleText.AutoSize = true;
-            this.labelTitleText.Location = new System.Drawing.Point(23, 191);
-            this.labelTitleText.Name = "labelTitleText";
-            this.labelTitleText.Size = new System.Drawing.Size(38, 20);
-            this.labelTitleText.TabIndex = 8;
-            this.labelTitleText.Text = "Title";
-            // 
-            // checkBoxHasDicount
-            // 
-            this.checkBoxHasDicount.AutoSize = true;
-            this.checkBoxHasDicount.Location = new System.Drawing.Point(27, 293);
-            this.checkBoxHasDicount.Name = "checkBoxHasDicount";
-            this.checkBoxHasDicount.Size = new System.Drawing.Size(91, 24);
-            this.checkBoxHasDicount.TabIndex = 10;
-            this.checkBoxHasDicount.Text = "Discount";
-            this.checkBoxHasDicount.UseVisualStyleBackColor = true;
-            // 
             // BookshopMenu
             // 
+            this.BookshopMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MenuItemAdd,
+            this.MenuItemEdit,
+            this.MenuItemDelete});
             this.BookshopMenu.Location = new System.Drawing.Point(0, 0);
             this.BookshopMenu.Name = "BookshopMenu";
             this.BookshopMenu.Size = new System.Drawing.Size(981, 24);
             this.BookshopMenu.TabIndex = 2;
             this.BookshopMenu.Text = "menuStrip1";
+            this.BookshopMenu.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.BookshopMenu_ItemClicked);
+            // 
+            // MenuItemAdd
+            // 
+            this.MenuItemAdd.Name = "MenuItemAdd";
+            this.MenuItemAdd.Size = new System.Drawing.Size(71, 20);
+            this.MenuItemAdd.Text = "Добавить";
+            this.MenuItemAdd.Click += new System.EventHandler(this.MenuItemAdd_Click);
+            // 
+            // MenuItemEdit
+            // 
+            this.MenuItemEdit.Name = "MenuItemEdit";
+            this.MenuItemEdit.Size = new System.Drawing.Size(99, 20);
+            this.MenuItemEdit.Text = "Редактировать";
+            // 
+            // MenuItemDelete
+            // 
+            this.MenuItemDelete.Name = "MenuItemDelete";
+            this.MenuItemDelete.Size = new System.Drawing.Size(63, 20);
+            this.MenuItemDelete.Text = "Удалить";
+            this.MenuItemDelete.Click += new System.EventHandler(this.MenuItemDelete_Click);
             // 
             // Id
             // 
@@ -241,6 +270,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.MainGrid)).EndInit();
             this.groupBoxCard.ResumeLayout(false);
             this.groupBoxCard.PerformLayout();
+            this.BookshopMenu.ResumeLayout(false);
+            this.BookshopMenu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bookBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -274,6 +305,9 @@
         private System.Windows.Forms.Label labelBookId;
         private System.Windows.Forms.CheckBox checkBoxHasDicount;
         private System.Windows.Forms.MenuStrip BookshopMenu;
+        private System.Windows.Forms.ToolStripMenuItem MenuItemAdd;
+        private System.Windows.Forms.ToolStripMenuItem MenuItemEdit;
+        private System.Windows.Forms.ToolStripMenuItem MenuItemDelete;
     }
 }
 

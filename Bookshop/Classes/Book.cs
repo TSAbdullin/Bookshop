@@ -21,9 +21,12 @@
             this.HasDiscount = HasDiscount;
         }
 
-        public Book(string Title)
+        public Book(string Title, long AuthorId, long GenreId, bool HasDiscount)
         {
             this.Title = Title;
+            this.AuthorId = AuthorId;
+            this.GenreId = GenreId;
+            this.HasDiscount = HasDiscount;
             Id = _idCounter++;
         }
 

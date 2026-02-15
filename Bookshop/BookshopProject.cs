@@ -19,7 +19,6 @@ namespace Bookshop
                 Library.LoadGenres("C:\\Users\\Timur\\source\\repos\\Bookshop\\Bookshop\\Files\\Genres.txt"); // очередная затычка
                 Library.LoadAuthors("C:\\Users\\Timur\\source\\repos\\Bookshop\\Bookshop\\Files\\Authors.txt"); // еще одна затычка
                 MainGrid.DataSource = Library.books;
-                MainGrid.Refresh();
 
             }
             catch (ArgumentException ex)
@@ -38,7 +37,6 @@ namespace Bookshop
             if (MainGrid.SelectedRows.Count > 0)
             {
                 var book = MainGrid.SelectedRows[0].DataBoundItem as Book;
-
                 textBoxId.Text = book.Id.ToString();
                 textBoxAuthor.Text = book.AuthorName.ToString();
                 textBoxGenre.Text = book.GenreName.ToString();
@@ -55,6 +53,39 @@ namespace Bookshop
         private void checkBoxHasDiscount_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void MenuItemAdd_Click(object sender, EventArgs e)
+        {
+            AddBookForm addBookForm = new AddBookForm();
+            var i = addBookForm.ShowDialog();
+            if (i == DialogResult.OK)
+            {
+                MainGrid.Refresh();
+            }
+        }
+
+        private void BookshopMenu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void MenuItemDelete_Click(object sender, EventArgs e)
+        {
+            if (MainGrid.SelectedRows.Count > 0)
+            {
+                var result = MessageBox.Show("Вы уверены, что хотите удалить книгу?", "Подтверждение удаления", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                var book = MainGrid.SelectedRows[0].DataBoundItem as Book;
+
+                if (result == DialogResult.Yes)
+                {
+                    Library.DeleteBook(book.Id);
+                }
+            }
+            else
+            {
+                throw new ArgumentException("Выделите книгу, которую хотите удалить!");
+            }
         }
     }
 }

@@ -12,5 +12,16 @@
             _idCounter = _idCounter + 1; // предположим, что в файле все гарантированно отсортированно по ID)
             this.Name = Name;
         }
+
+        public Author(string Name)
+        {
+            this.Name = Name;
+            Id = _idCounter++;
+        }
+
+        public override string ToString()
+        {
+            return $"{Id}: {Name}";
+        }
     }
 }

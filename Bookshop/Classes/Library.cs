@@ -1,19 +1,54 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
+using System.Runtime.InteropServices.WindowsRuntime;
 
 namespace Bookshop.Classes
 {
     public class Library
     {
-        public static List<Book> books {  get; set; } = new List<Book>();
+        public static BindingList<Book> books {  get; set; } = new BindingList<Book>();
         public static Dictionary<long, Genre> genresById { get; set; } = new Dictionary<long, Genre>();
         public static Dictionary<long, Author> authorsById { get; set; } = new Dictionary<long, Author>();
 
-
-        public void AddBook()
+        /// <summary>
+        /// Метод, который позволяет создать книгу
+        /// </summary>
+        /// <param name="title"></param>
+        /// <param name="author"></param>
+        /// <param name="genre"></param>
+        /// <param name="hasDiscount"></param>
+        /// <exception cref="ArgumentException"></exception>
+        public static void AddBook(string title, string author, string genre, bool hasDiscount)
         {
+            var authorId = GetAuthorId(author);
+            var genreId = GetGenreId(genre);
 
+            if (authorId == -1)
+            {
+                throw new ArgumentException("Такого автора не существует!");
+            }
+
+            books.Add(new Book(title, authorId, genreId, hasDiscount));
+        }
+
+        /// <summary>
+        /// Метод, который позволяет удалять книгу 
+        /// </summary>
+        /// <param name="idBook"></param>
+        /// <returns></returns>
+        public static bool DeleteBook(long idBook)
+        {
+            foreach (var book in books)
+            {
+                if (book.Id == idBook)
+                {
+                    books.Remove(book);
+                    return true;
+                }
+            }
+            return false;
         }
 
         /// <summary>
@@ -40,7 +75,6 @@ namespace Bookshop.Classes
             {
                 string[] parts = linesBooks[i].Split('.'); 
                 string[] partsData = parts[1].Split(',');
-
                 string title = partsData[0].Trim();
 
                 #region Проверка на возможность запарсить данные из файла
@@ -69,6 +103,11 @@ namespace Bookshop.Classes
             }
         }
 
+        /// <summary>
+        /// Метод, который подгружает жанры из файла
+        /// </summary>
+        /// <param name="pathToGenres"></param>
+        /// <exception cref="ArgumentException"></exception>
         public static void LoadGenres(string pathToGenres) // Сложность O(N)
         {
             if (!File.Exists(pathToGenres))
@@ -93,6 +132,11 @@ namespace Bookshop.Classes
             }
         }
 
+        /// <summary>
+        /// Метод, который подгружает авторов из файла
+        /// </summary>
+        /// <param name="pathToAuthors"></param>
+        /// <exception cref="ArgumentException"></exception>
         public static void LoadAuthors(string pathToAuthors) // Сложность O(N)
         {
             if (!File.Exists(pathToAuthors))
@@ -116,7 +160,13 @@ namespace Bookshop.Classes
             }
         }
 
-        public static string GetGenreName(long genreId)
+        /// <summary>
+        /// Метод, который позволяет получить название жанра по идентификатору жанра
+        /// </summary>
+        /// <param name="genreId"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
+        public static string GetGenreName(long genreId) // O(1)
         {
             if (genresById.TryGetValue(genreId, out var genres))
             {
@@ -125,13 +175,48 @@ namespace Bookshop.Classes
             else { throw new ArgumentException("Не найден жанр!"); }
         }
 
-        public static string GetAuthorName(long authorId)
+        /// <summary>
+        /// Метод, который позволяет получить название автора по идентификатору автора
+        /// </summary>
+        /// <param name="authorId"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
+        public static string GetAuthorName(long authorId) // O(1)
         {
             if (authorsById.TryGetValue(authorId, out var author))
             {
                 return author.Name;
             }
             else { throw new ArgumentException("Не найден автор!"); }
+        }
+
+        /// <summary>
+        /// Метод, возвращающий айди автора по его имени
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public static long GetAuthorId(string name) // в худшем случае O(N), в лучшем O(1)
+        {
+            foreach (var pair in authorsById)
+            {
+                if (pair.Value.Name == name)
+                {
+                    return pair.Key;
+                }
+            }
+            return -1;
+        }
+
+        public static long GetGenreId(string genre) // в худшем случае O(N), в лучшем O(1)
+        {
+            foreach (var pair in genresById)
+            {
+                if (pair.Value.Name == genre)
+                {
+                    return pair.Key;
+                }
+            }
+            return -1;
         }
     }
 }
