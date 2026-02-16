@@ -37,6 +37,12 @@ namespace Bookshop
             if (MainGrid.SelectedRows.Count > 0)
             {
                 var book = MainGrid.SelectedRows[0].DataBoundItem as Book;
+
+                if (book is null)
+                {
+                    MessageBox.Show("Выберите книгу!");
+                    return;
+                }
                 textBoxId.Text = book.Id.ToString();
                 textBoxAuthor.Text = book.AuthorName.ToString();
                 textBoxGenre.Text = book.GenreName.ToString();
@@ -58,8 +64,8 @@ namespace Bookshop
         private void MenuItemAdd_Click(object sender, EventArgs e)
         {
             AddBookForm addBookForm = new AddBookForm();
-            var i = addBookForm.ShowDialog();
-            if (i == DialogResult.OK)
+            var result = addBookForm.ShowDialog();
+            if (result == DialogResult.OK)
             {
                 MainGrid.Refresh();
             }
@@ -77,6 +83,12 @@ namespace Bookshop
                 var result = MessageBox.Show("Вы уверены, что хотите удалить книгу?", "Подтверждение удаления", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 var book = MainGrid.SelectedRows[0].DataBoundItem as Book;
 
+                if (book is null)
+                {
+                    MessageBox.Show("Книга не выбрана", "Ошибка!");
+                    return;
+                }
+
                 if (result == DialogResult.Yes)
                 {
                     Library.DeleteBook(book.Id);
@@ -84,7 +96,26 @@ namespace Bookshop
             }
             else
             {
-                throw new ArgumentException("Выделите книгу, которую хотите удалить!");
+                MessageBox.Show("Выберите книгу!", "Ошибка!");
+            }
+        }
+
+        private void MenuItemEdit_Click(object sender, EventArgs e)
+        {
+            if (MainGrid.SelectedRows.Count > 0)
+            {
+                AddBookForm editBook = new AddBookForm();
+                var result = editBook.ShowDialog();
+
+                if (result == DialogResult.OK)
+                {
+                    MainGrid.Refresh();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выберите книгу!", "Ошибка!");
+                return;
             }
         }
     }

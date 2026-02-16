@@ -46,28 +46,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddBookForm.cs">
+    <Compile Include="Forms\AddBookForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddBookForm.Designer.cs">
+    <Compile Include="Forms\AddBookForm.Designer.cs">
       <DependentUpon>AddBookForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\Author.cs" />
     <Compile Include="Classes\Book.cs" />
     <Compile Include="Classes\Genre.cs" />
     <Compile Include="Classes\Library.cs" />
-    <Compile Include="BookshopProject.cs">
+    <Compile Include="Forms\BookshopProject.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BookshopProject.Designer.cs">
+    <Compile Include="Forms\BookshopProject.Designer.cs">
       <DependentUpon>BookshopProject.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AddBookForm.resx">
+    <EmbeddedResource Include="Forms\AddBookForm.resx">
       <DependentUpon>AddBookForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BookshopProject.resx">
+    <EmbeddedResource Include="Forms\BookshopProject.resx">
       <DependentUpon>BookshopProject.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

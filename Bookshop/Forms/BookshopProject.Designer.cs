@@ -209,6 +209,7 @@
             this.MenuItemEdit.Name = "MenuItemEdit";
             this.MenuItemEdit.Size = new System.Drawing.Size(99, 20);
             this.MenuItemEdit.Text = "Редактировать";
+            this.MenuItemEdit.Click += new System.EventHandler(this.MenuItemEdit_Click);
             // 
             // MenuItemDelete
             // 
