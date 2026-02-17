@@ -52,7 +52,6 @@
             this.textBoxEditTitle.Name = "textBoxEditTitle";
             this.textBoxEditTitle.Size = new System.Drawing.Size(260, 28);
             this.textBoxEditTitle.TabIndex = 0;
-            this.textBoxEditTitle.TextChanged += new System.EventHandler(this.textBoxEditTitle_TextChanged);
             // 
             // labelEditTitle
             // 
@@ -112,7 +111,6 @@
             this.comboBoxEditGenre.Name = "comboBoxEditGenre";
             this.comboBoxEditGenre.Size = new System.Drawing.Size(260, 28);
             this.comboBoxEditGenre.TabIndex = 9;
-            this.comboBoxEditGenre.SelectedIndexChanged += new System.EventHandler(this.comboBoxEditGenre_SelectedIndexChanged);
             // 
             // comboBoxEditAuthor
             // 
@@ -124,7 +122,6 @@
             this.comboBoxEditAuthor.Name = "comboBoxEditAuthor";
             this.comboBoxEditAuthor.Size = new System.Drawing.Size(260, 28);
             this.comboBoxEditAuthor.TabIndex = 10;
-            this.comboBoxEditAuthor.SelectedIndexChanged += new System.EventHandler(this.comboBoxEditAuthor_SelectedIndexChanged);
             // 
             // buttonAcceptChanges
             // 

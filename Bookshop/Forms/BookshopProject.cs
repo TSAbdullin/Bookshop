@@ -31,11 +31,6 @@ namespace Bookshop
             }
         }
 
-        private void MainGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void MainGrid_SelectionChanged(object sender, EventArgs e)
         {
             if (MainGrid.SelectedRows.Count > 0)
@@ -55,16 +50,6 @@ namespace Bookshop
             }
         }
 
-        private void groupBoxCard_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBoxHasDiscount_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void MenuItemAdd_Click(object sender, EventArgs e)
         {
             AddBookForm addBookForm = new AddBookForm();
@@ -75,10 +60,6 @@ namespace Bookshop
             }
         }
 
-        private void BookshopMenu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
 
         private void MenuItemDelete_Click(object sender, EventArgs e)
         {
@@ -126,16 +107,6 @@ namespace Bookshop
             {
                 MainGrid.Refresh();
             }
-        }
-
-        private void bookBindingSource_CurrentChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxId_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

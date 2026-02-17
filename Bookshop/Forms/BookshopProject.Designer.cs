@@ -81,7 +81,6 @@
             this.MainGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.MainGrid.Size = new System.Drawing.Size(573, 475);
             this.MainGrid.TabIndex = 0;
-            this.MainGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.MainGrid_CellContentClick);
             this.MainGrid.SelectionChanged += new System.EventHandler(this.MainGrid_SelectionChanged);
             // 
             // groupBoxCard
@@ -104,7 +103,6 @@
             this.groupBoxCard.TabIndex = 1;
             this.groupBoxCard.TabStop = false;
             this.groupBoxCard.Text = "Card";
-            this.groupBoxCard.Enter += new System.EventHandler(this.groupBoxCard_Enter);
             // 
             // checkBoxHasDicount
             // 
@@ -159,7 +157,6 @@
             this.textBoxId.ReadOnly = true;
             this.textBoxId.Size = new System.Drawing.Size(215, 26);
             this.textBoxId.TabIndex = 4;
-            this.textBoxId.TextChanged += new System.EventHandler(this.textBoxId_TextChanged);
             // 
             // textBoxTitle
             // 
@@ -196,7 +193,6 @@
             this.BookshopMenu.Size = new System.Drawing.Size(981, 24);
             this.BookshopMenu.TabIndex = 2;
             this.BookshopMenu.Text = "menuStrip1";
-            this.BookshopMenu.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.BookshopMenu_ItemClicked);
             // 
             // MenuItemAdd
             // 
@@ -255,7 +251,6 @@
             // bookBindingSource
             // 
             this.bookBindingSource.DataSource = typeof(Bookshop.Classes.Book);
-            this.bookBindingSource.CurrentChanged += new System.EventHandler(this.bookBindingSource_CurrentChanged);
             // 
             // BookshopProject
             // 

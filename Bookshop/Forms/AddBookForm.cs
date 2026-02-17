@@ -45,16 +45,6 @@ namespace Bookshop
             }
         }
 
-        private void comboBoxEditGenre_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void libraryBindingSource_CurrentChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void buttonAcceptChanges_Click(object sender, EventArgs e)
         {
 
@@ -107,25 +97,10 @@ namespace Bookshop
             }
         }
 
-        private void textBoxEditId_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void buttonCancelChanges_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
-        }
-
-        private void textBoxEditTitle_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBoxEditAuthor_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
