@@ -159,6 +159,7 @@
             this.textBoxId.ReadOnly = true;
             this.textBoxId.Size = new System.Drawing.Size(215, 26);
             this.textBoxId.TabIndex = 4;
+            this.textBoxId.TextChanged += new System.EventHandler(this.textBoxId_TextChanged);
             // 
             // textBoxTitle
             // 
@@ -254,6 +255,7 @@
             // bookBindingSource
             // 
             this.bookBindingSource.DataSource = typeof(Bookshop.Classes.Book);
+            this.bookBindingSource.CurrentChanged += new System.EventHandler(this.bookBindingSource_CurrentChanged);
             // 
             // BookshopProject
             // 

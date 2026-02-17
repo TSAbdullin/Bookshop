@@ -7,10 +7,23 @@ namespace Bookshop
 {
     public partial class AddBookForm : Form
     {
-        static readonly HashSet<char> restrictedChars = new HashSet<char> { ':', '/', '[', ']', '=', '-', '^', '#', '@' };
+        static readonly HashSet<char> restrictedChars = new HashSet<char> { ':', '/', '[', ']', '=', '-', '^', '#', '@', '.' };
+        private readonly Book _editingBook;
         public AddBookForm()
         {
             InitializeComponent();
+        }
+
+        public AddBookForm(Book bookToEdit)
+        {
+            InitializeComponent();
+
+            if (bookToEdit is null)
+            {
+                throw new ArgumentNullException("Книга не задана");
+            }
+
+            _editingBook = bookToEdit;
         }
 
         private void AddBookForm_Load(object sender, EventArgs e)
@@ -22,6 +35,14 @@ namespace Bookshop
             comboBoxEditAuthor.DataSource = Library.GetAuthors();
             comboBoxEditAuthor.DisplayMember = "Name";
             comboBoxEditAuthor.ValueMember = "Id";
+
+            if (_editingBook != null)
+            {
+                textBoxEditTitle.Text = _editingBook.Title;
+                comboBoxEditAuthor.SelectedValue = _editingBook.AuthorId;
+                comboBoxEditGenre.SelectedValue = _editingBook.GenreId;
+                checkBoxEditHasDiscount.Checked = _editingBook.HasDiscount;
+            }
         }
 
         private void comboBoxEditGenre_SelectedIndexChanged(object sender, EventArgs e)
@@ -65,7 +86,18 @@ namespace Bookshop
 
             try
             {
-                Library.AddBook(title, authorId, genreId, checkBoxEditHasDiscount.Checked);
+                if (_editingBook == null)
+                {
+                    Library.AddBook(title, authorId, genreId, checkBoxEditHasDiscount.Checked);
+                }
+                else
+                {
+                    _editingBook.Title = title;
+                    _editingBook.AuthorId = authorId;
+                    _editingBook.GenreId = genreId;
+                    _editingBook.HasDiscount = checkBoxEditHasDiscount.Checked;
+                }
+
                 DialogResult = DialogResult.OK;
                 Close();
             }

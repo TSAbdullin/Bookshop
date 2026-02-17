@@ -1,5 +1,6 @@
 ﻿using Bookshop.Classes;
 using System;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Bookshop
@@ -13,11 +14,14 @@ namespace Bookshop
 
         private void Bookshop_Load(object sender, EventArgs e)
         {
+            var baseDir = AppDomain.CurrentDomain.BaseDirectory;
+            var filesDir = Path.Combine(baseDir, "Files");
+
             try
             {
-                Library.LoadBooks("C:\\Users\\Timur\\source\\repos\\Bookshop\\Bookshop\\Files\\Books.txt"); // временная затычка для отладки
-                Library.LoadGenres("C:\\Users\\Timur\\source\\repos\\Bookshop\\Bookshop\\Files\\Genres.txt"); // очередная затычка
-                Library.LoadAuthors("C:\\Users\\Timur\\source\\repos\\Bookshop\\Bookshop\\Files\\Authors.txt"); // еще одна затычка
+                Library.LoadBooks(Path.Combine(filesDir, "Books.txt"));
+                Library.LoadGenres(Path.Combine(filesDir, "Genres.txt"));
+                Library.LoadAuthors(Path.Combine(filesDir, "Authors.txt"));
                 MainGrid.DataSource = Library.books;
 
             }
@@ -102,21 +106,36 @@ namespace Bookshop
 
         private void MenuItemEdit_Click(object sender, EventArgs e)
         {
-            if (MainGrid.SelectedRows.Count > 0)
-            {
-                AddBookForm editBook = new AddBookForm();
-                var result = editBook.ShowDialog();
-
-                if (result == DialogResult.OK)
-                {
-                    MainGrid.Refresh();
-                }
-            }
-            else
+            if (MainGrid.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Выберите книгу!", "Ошибка!");
                 return;
             }
+
+            var book = MainGrid.SelectedRows[0].DataBoundItem as Book;
+            if (book is null)
+            {
+                MessageBox.Show("Книга не выбрана", "Ошибка!");
+                return;
+            }
+
+            AddBookForm editBook = new AddBookForm(book);
+            var result = editBook.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                MainGrid.Refresh();
+            }
+        }
+
+        private void bookBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxId_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

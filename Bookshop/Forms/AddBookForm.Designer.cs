@@ -46,6 +46,7 @@
             // 
             this.textBoxEditTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxEditTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxEditTitle.Location = new System.Drawing.Point(280, 121);
             this.textBoxEditTitle.Multiline = true;
             this.textBoxEditTitle.Name = "textBoxEditTitle";
@@ -192,7 +193,7 @@
             this.Controls.Add(this.textBoxEditTitle);
             this.Controls.Add(this.panelWithButtons);
             this.Name = "AddBookForm";
-            this.Text = "Add book";
+            this.Text = "Workshop";
             this.Load += new System.EventHandler(this.AddBookForm_Load);
             this.panelWithButtons.ResumeLayout(false);
             this.ResumeLayout(false);

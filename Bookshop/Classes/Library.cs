@@ -41,15 +41,11 @@ namespace Bookshop.Classes
         /// <returns></returns>
         public static bool DeleteBook(long idBook)
         {
-            foreach (var book in books)
-            {
-                if (book.Id == idBook)
-                {
-                    books.Remove(book);
-                    return true;
-                }
-            }
-            return false;
+            var book = books.FirstOrDefault(b => b.Id == idBook);
+            if (book == null) { return false; }
+
+            books.Remove(book);
+            return true;
         }
 
         /// <summary>
