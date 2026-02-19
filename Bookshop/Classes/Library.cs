@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
@@ -11,6 +12,7 @@ namespace Bookshop.Classes
         public static BindingList<Book> books {  get; set; } = new BindingList<Book>();
         public static Dictionary<long, Genre> genresById { get; set; } = new Dictionary<long, Genre>();
         public static Dictionary<long, Author> authorsById { get; set; } = new Dictionary<long, Author>();
+
         /// <summary>
         /// Метод, который позволяет создать книгу
         /// </summary>
@@ -195,6 +197,88 @@ namespace Bookshop.Classes
                 return author.Name;
             }
             else { throw new ArgumentException("Не найден автор!"); }
+        }
+
+        public static List<Book> SearchBooks(long? id, bool? hasDiscount, string author = null, string title = null, string genre = null)
+        {
+            bool hasTextFilters =
+                !string.IsNullOrWhiteSpace(author) ||
+                !string.IsNullOrWhiteSpace(title) ||
+                !string.IsNullOrWhiteSpace(genre) ||
+                hasDiscount.HasValue;
+
+            if (id.HasValue && !hasTextFilters)
+            {
+                var book = BinarySearchById(books.ToList(), id.Value);
+
+                if (book != null)
+                {
+                    return new List<Book> { book };
+                }
+                else
+                {
+                    return new List<Book>();
+                }
+            }
+
+            IEnumerable<Book> result = books;
+
+            if (id.HasValue)
+            {
+                result = result.Where(x => x.Id == id.Value);
+            }
+
+            if (!string.IsNullOrWhiteSpace(author))
+            {
+                author = author.Trim();
+                result = result.Where(x => x.AuthorName.Contains(author));
+            }
+
+            if (!string.IsNullOrWhiteSpace(title))
+            {
+                title = title.Trim();
+                result = result.Where(x => x.Title.Contains(title));
+            }
+
+            if (!string.IsNullOrWhiteSpace(genre))
+            {
+                genre = genre.Trim();
+                result = result.Where(x => x.GenreName.Contains(genre));
+            }
+
+            if (hasDiscount.HasValue)
+            {
+                result = result.Where(x => x.HasDiscount == hasDiscount.Value);
+            }
+
+            return result.ToList();
+        }
+
+        private static Book BinarySearchById(List<Book> books, long id)
+        {
+            int left = 0;
+            int right = books.Count - 1;
+
+            while (left <= right)
+            {
+                int mid = left + (right - left) / 2;
+
+                if (books[mid].Id == id)
+                {
+                    return books[mid];
+                }
+
+                if (books[mid].Id < id)
+                {
+                    left = mid + 1;
+                }
+                else
+                {
+                    right = mid - 1;
+                }
+            }
+
+            return null;
         }
     }
 }

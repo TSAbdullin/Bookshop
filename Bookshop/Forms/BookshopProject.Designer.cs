@@ -44,6 +44,10 @@
             this.MenuItemAdd = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItemEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItemDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuItemSearch = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuItemCard = new System.Windows.Forms.ToolStripMenuItem();
+            this.buttonSearch = new System.Windows.Forms.Button();
+            this.buttonSearchCancel = new System.Windows.Forms.Button();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AuthorId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -86,6 +90,8 @@
             // groupBoxCard
             // 
             this.groupBoxCard.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.groupBoxCard.Controls.Add(this.buttonSearchCancel);
+            this.groupBoxCard.Controls.Add(this.buttonSearch);
             this.groupBoxCard.Controls.Add(this.checkBoxHasDicount);
             this.groupBoxCard.Controls.Add(this.labelTitleText);
             this.groupBoxCard.Controls.Add(this.labelGenreText);
@@ -103,6 +109,8 @@
             this.groupBoxCard.TabIndex = 1;
             this.groupBoxCard.TabStop = false;
             this.groupBoxCard.Text = "Card";
+            this.groupBoxCard.Visible = false;
+            this.groupBoxCard.Enter += new System.EventHandler(this.groupBoxCard_Enter);
             // 
             // checkBoxHasDicount
             // 
@@ -187,7 +195,9 @@
             this.BookshopMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MenuItemAdd,
             this.MenuItemEdit,
-            this.MenuItemDelete});
+            this.MenuItemDelete,
+            this.MenuItemSearch,
+            this.MenuItemCard});
             this.BookshopMenu.Location = new System.Drawing.Point(0, 0);
             this.BookshopMenu.Name = "BookshopMenu";
             this.BookshopMenu.Size = new System.Drawing.Size(981, 24);
@@ -214,6 +224,40 @@
             this.MenuItemDelete.Size = new System.Drawing.Size(63, 20);
             this.MenuItemDelete.Text = "Удалить";
             this.MenuItemDelete.Click += new System.EventHandler(this.MenuItemDelete_Click);
+            // 
+            // MenuItemSearch
+            // 
+            this.MenuItemSearch.Name = "MenuItemSearch";
+            this.MenuItemSearch.Size = new System.Drawing.Size(54, 20);
+            this.MenuItemSearch.Text = "Поиск";
+            this.MenuItemSearch.Click += new System.EventHandler(this.MenuItemSearch_Click);
+            // 
+            // MenuItemCard
+            // 
+            this.MenuItemCard.Name = "MenuItemCard";
+            this.MenuItemCard.Size = new System.Drawing.Size(70, 20);
+            this.MenuItemCard.Text = "Карточка";
+            this.MenuItemCard.Click += new System.EventHandler(this.MenuItemCard_Click);
+            // 
+            // buttonSearch
+            // 
+            this.buttonSearch.Location = new System.Drawing.Point(27, 376);
+            this.buttonSearch.Name = "buttonSearch";
+            this.buttonSearch.Size = new System.Drawing.Size(91, 31);
+            this.buttonSearch.TabIndex = 11;
+            this.buttonSearch.Text = "Search";
+            this.buttonSearch.UseVisualStyleBackColor = true;
+            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
+            // 
+            // buttonSearchCancel
+            // 
+            this.buttonSearchCancel.Location = new System.Drawing.Point(151, 376);
+            this.buttonSearchCancel.Name = "buttonSearchCancel";
+            this.buttonSearchCancel.Size = new System.Drawing.Size(91, 31);
+            this.buttonSearchCancel.TabIndex = 12;
+            this.buttonSearchCancel.Text = "Cancel";
+            this.buttonSearchCancel.UseVisualStyleBackColor = true;
+            this.buttonSearchCancel.Click += new System.EventHandler(this.buttonSearchCancel_Click);
             // 
             // Id
             // 
@@ -306,6 +350,10 @@
         private System.Windows.Forms.ToolStripMenuItem MenuItemAdd;
         private System.Windows.Forms.ToolStripMenuItem MenuItemEdit;
         private System.Windows.Forms.ToolStripMenuItem MenuItemDelete;
+        private System.Windows.Forms.ToolStripMenuItem MenuItemSearch;
+        private System.Windows.Forms.ToolStripMenuItem MenuItemCard;
+        private System.Windows.Forms.Button buttonSearchCancel;
+        private System.Windows.Forms.Button buttonSearch;
     }
 }
 
