@@ -30,7 +30,14 @@
         {
             this.components = new System.ComponentModel.Container();
             this.MainGrid = new System.Windows.Forms.DataGridView();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AuthorId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GenreId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bookBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBoxCard = new System.Windows.Forms.GroupBox();
+            this.buttonSearchCancel = new System.Windows.Forms.Button();
+            this.buttonSearch = new System.Windows.Forms.Button();
             this.checkBoxHasDicount = new System.Windows.Forms.CheckBox();
             this.labelTitleText = new System.Windows.Forms.Label();
             this.labelGenreText = new System.Windows.Forms.Label();
@@ -46,17 +53,10 @@
             this.MenuItemDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItemSearch = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItemCard = new System.Windows.Forms.ToolStripMenuItem();
-            this.buttonSearch = new System.Windows.Forms.Button();
-            this.buttonSearchCancel = new System.Windows.Forms.Button();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AuthorId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GenreId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bookBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.MainGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bookBindingSource)).BeginInit();
             this.groupBoxCard.SuspendLayout();
             this.BookshopMenu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bookBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // MainGrid
@@ -87,6 +87,43 @@
             this.MainGrid.TabIndex = 0;
             this.MainGrid.SelectionChanged += new System.EventHandler(this.MainGrid_SelectionChanged);
             // 
+            // Id
+            // 
+            this.Id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Width = 41;
+            // 
+            // Title
+            // 
+            this.Title.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Title.DataPropertyName = "Title";
+            this.Title.HeaderText = "Title";
+            this.Title.Name = "Title";
+            this.Title.ReadOnly = true;
+            // 
+            // AuthorId
+            // 
+            this.AuthorId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.AuthorId.DataPropertyName = "AuthorName";
+            this.AuthorId.HeaderText = "Author";
+            this.AuthorId.Name = "AuthorId";
+            this.AuthorId.ReadOnly = true;
+            // 
+            // GenreId
+            // 
+            this.GenreId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.GenreId.DataPropertyName = "GenreName";
+            this.GenreId.HeaderText = "Genre";
+            this.GenreId.Name = "GenreId";
+            this.GenreId.ReadOnly = true;
+            // 
+            // bookBindingSource
+            // 
+            this.bookBindingSource.DataSource = typeof(Bookshop.Classes.Book);
+            // 
             // groupBoxCard
             // 
             this.groupBoxCard.BackColor = System.Drawing.SystemColors.ControlDarkDark;
@@ -110,6 +147,26 @@
             this.groupBoxCard.TabStop = false;
             this.groupBoxCard.Text = "Card";
             this.groupBoxCard.Visible = false;
+            // 
+            // buttonSearchCancel
+            // 
+            this.buttonSearchCancel.Location = new System.Drawing.Point(151, 376);
+            this.buttonSearchCancel.Name = "buttonSearchCancel";
+            this.buttonSearchCancel.Size = new System.Drawing.Size(91, 31);
+            this.buttonSearchCancel.TabIndex = 12;
+            this.buttonSearchCancel.Text = "Cancel";
+            this.buttonSearchCancel.UseVisualStyleBackColor = true;
+            this.buttonSearchCancel.Click += new System.EventHandler(this.buttonSearchCancel_Click);
+            // 
+            // buttonSearch
+            // 
+            this.buttonSearch.Location = new System.Drawing.Point(27, 376);
+            this.buttonSearch.Name = "buttonSearch";
+            this.buttonSearch.Size = new System.Drawing.Size(91, 31);
+            this.buttonSearch.TabIndex = 11;
+            this.buttonSearch.Text = "Search";
+            this.buttonSearch.UseVisualStyleBackColor = true;
+            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
             // checkBoxHasDicount
             // 
@@ -238,63 +295,6 @@
             this.MenuItemCard.Text = "Карточка";
             this.MenuItemCard.Click += new System.EventHandler(this.MenuItemCard_Click);
             // 
-            // buttonSearch
-            // 
-            this.buttonSearch.Location = new System.Drawing.Point(27, 376);
-            this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(91, 31);
-            this.buttonSearch.TabIndex = 11;
-            this.buttonSearch.Text = "Search";
-            this.buttonSearch.UseVisualStyleBackColor = true;
-            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
-            // 
-            // buttonSearchCancel
-            // 
-            this.buttonSearchCancel.Location = new System.Drawing.Point(151, 376);
-            this.buttonSearchCancel.Name = "buttonSearchCancel";
-            this.buttonSearchCancel.Size = new System.Drawing.Size(91, 31);
-            this.buttonSearchCancel.TabIndex = 12;
-            this.buttonSearchCancel.Text = "Cancel";
-            this.buttonSearchCancel.UseVisualStyleBackColor = true;
-            this.buttonSearchCancel.Click += new System.EventHandler(this.buttonSearchCancel_Click);
-            // 
-            // Id
-            // 
-            this.Id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Width = 41;
-            // 
-            // Title
-            // 
-            this.Title.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Title.DataPropertyName = "Title";
-            this.Title.HeaderText = "Title";
-            this.Title.Name = "Title";
-            this.Title.ReadOnly = true;
-            // 
-            // AuthorId
-            // 
-            this.AuthorId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.AuthorId.DataPropertyName = "AuthorName";
-            this.AuthorId.HeaderText = "Author";
-            this.AuthorId.Name = "AuthorId";
-            this.AuthorId.ReadOnly = true;
-            // 
-            // GenreId
-            // 
-            this.GenreId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.GenreId.DataPropertyName = "GenreName";
-            this.GenreId.HeaderText = "Genre";
-            this.GenreId.Name = "GenreId";
-            this.GenreId.ReadOnly = true;
-            // 
-            // bookBindingSource
-            // 
-            this.bookBindingSource.DataSource = typeof(Bookshop.Classes.Book);
-            // 
             // BookshopProject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -309,11 +309,11 @@
             this.Text = "Bookshop";
             this.Load += new System.EventHandler(this.Bookshop_Load);
             ((System.ComponentModel.ISupportInitialize)(this.MainGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bookBindingSource)).EndInit();
             this.groupBoxCard.ResumeLayout(false);
             this.groupBoxCard.PerformLayout();
             this.BookshopMenu.ResumeLayout(false);
             this.BookshopMenu.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bookBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
