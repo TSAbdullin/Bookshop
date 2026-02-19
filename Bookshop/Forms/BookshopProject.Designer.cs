@@ -110,7 +110,6 @@
             this.groupBoxCard.TabStop = false;
             this.groupBoxCard.Text = "Card";
             this.groupBoxCard.Visible = false;
-            this.groupBoxCard.Enter += new System.EventHandler(this.groupBoxCard_Enter);
             // 
             // checkBoxHasDicount
             // 
@@ -321,17 +320,8 @@
         }
 
         #endregion
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn titleDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn authorIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn genreIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn hasDiscountDataGridViewCheckBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
         private System.Windows.Forms.DataGridView MainGrid;
         private System.Windows.Forms.BindingSource bookBindingSource;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Title;
         private System.Windows.Forms.DataGridViewTextBoxColumn AuthorId;

@@ -186,10 +186,5 @@ namespace Bookshop
         {
             ReloadGrid();
         }
-
-        private void groupBoxCard_Enter(object sender, EventArgs e)
-        {
-
-        }
     }
 }
